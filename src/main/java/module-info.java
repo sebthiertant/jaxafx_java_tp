@@ -12,4 +12,6 @@ module com.example.java_fx_tp {
 
     opens com.example.java_fx_tp to javafx.fxml;
     exports com.example.java_fx_tp;
+    exports com.example.java_fx_tp.controller;
+    opens com.example.java_fx_tp.controller to javafx.fxml;
 }
