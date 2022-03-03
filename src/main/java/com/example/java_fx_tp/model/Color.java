@@ -84,7 +84,7 @@ public class Color {
     }
 
     public void setRed(int red) {
-        if (red >= 0 && red < 255) {
+        if (red >= 0 && red <= 255) {
             this.red = red;
             updateRedHexValue();
         }
@@ -98,7 +98,7 @@ public class Color {
     }
 
     public void setGreen(int green) {
-        if (green >= 0 && green < 255) {
+        if (green >= 0 && green <= 255) {
             this.green = green;
             updateGreenHexValue();
         }
@@ -112,7 +112,7 @@ public class Color {
     }
 
     public void setBlue(int blue) {
-        if (blue >= 0 && blue < 255) {
+        if (blue >= 0 && blue <= 255) {
             this.blue = blue;
             updateBlueHexValue();
         }

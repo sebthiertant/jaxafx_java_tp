@@ -1,15 +1,13 @@
 package com.example.java_fx_tp.controller;
 
 import com.example.java_fx_tp.model.Color;
-import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -67,6 +65,63 @@ public class ColorPickerController implements Initializable {
             hexaCharInput.setText(String.valueOf(color.getHexValue()));
             colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
         });
+
+            redInput.setOnAction(actionEvent -> {
+                try {
+                color.setRed(Integer.parseInt(redInput.getText()));
+                redRange.setValue(Integer.parseInt(redInput.getText()));
+                hexaCharInput.setText(String.valueOf(color.getHexValue()));
+                colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+            }
+                catch(IllegalArgumentException e) {
+                    redInput.setText(String.valueOf(color.getRed()));
+                }
+        });
+
+        greenInput.setOnAction(actionEvent -> {
+            try {
+                color.setGreen(Integer.parseInt(greenInput.getText()));
+                greenRange.setValue(Integer.parseInt(greenInput.getText()));
+                hexaCharInput.setText(String.valueOf(color.getHexValue()));
+                colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+            }
+            catch(IllegalArgumentException e) {
+                greenInput.setText(String.valueOf(color.getGreen()));
+            }
+        });
+
+        blueInput.setOnAction(actionEvent -> {
+            try {
+                color.setBlue(Integer.parseInt(blueInput.getText()));
+                blueRange.setValue(Integer.parseInt(blueInput.getText()));
+                hexaCharInput.setText(String.valueOf(color.getHexValue()));
+                colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+            }
+            catch(IllegalArgumentException e) {
+                blueInput.setText(String.valueOf(color.getBlue()));
+            }
+        });
+
+        hexaCharInput.setOnAction(actionEvent -> {
+            try {
+                color.setHexValue(hexaCharInput.getText());
+                hexaCharInput.setText(String.valueOf(color.getHexValue()));
+                colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+
+                redRange.setValue(color.getRed());
+                redInput.setText(String.valueOf(color.getRed()));
+
+                greenRange.setValue(color.getGreen());
+                greenInput.setText(String.valueOf(color.getGreen()));
+
+                blueRange.setValue(color.getBlue());
+                blueInput.setText(String.valueOf(color.getBlue()));
+            }
+            catch(IllegalArgumentException e) {
+                hexaCharInput.setText(color.getHexValue());
+            }
+        });
+
 
     }
 }
