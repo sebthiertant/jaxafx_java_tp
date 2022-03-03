@@ -40,6 +40,11 @@
             <Font name="Roboto Regular" size="16.0" />
          </font>
       </Label>
-      <Pane fx:id="colorDisplay" layoutX="344.0" layoutY="164.0" prefHeight="136.0" prefWidth="233.0" style="-fx-background-color: #FFFFFF;" />
+      <Pane fx:id="colorDisplay" layoutX="344.0" layoutY="164.0" prefHeight="84.0" prefWidth="233.0" style="-fx-background-color: #FFFFFF;" />
+      <Pane fx:id="randomColorPane1" layoutX="344.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0" />
+      <Pane fx:id="randomColorPane2" layoutX="384.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0" />
+      <Pane fx:id="randomColorPane3" layoutX="432.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0" />
+      <Pane fx:id="randomColorPane4" layoutX="477.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0" />
+      <Pane fx:id="randomColorPane5" layoutX="531.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0" />
    </children>
 </AnchorPane>
