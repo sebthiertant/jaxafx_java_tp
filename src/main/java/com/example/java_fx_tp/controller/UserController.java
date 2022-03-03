@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 public class UserController implements Initializable {
 
     private User user;
-
     @FXML
     private TextField textFieldFirstName;
 

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tu_color_java_tp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../tu_color_java_tp/out/artifacts/tu_color_java_tp_jar/tu_color_java_tp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

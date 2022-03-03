@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Java_FX_tp" target="17" />
+      <module name="Java_FX_tp" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
