@@ -51,7 +51,10 @@
             <Font name="Roboto Regular" size="16.0" />
          </font>
       </Label>
-      <Pane fx:id="colorDisplay" layoutX="344.0" layoutY="164.0" prefHeight="84.0" prefWidth="233.0" style="-fx-background-color: #FFFFFF;" />
+      <Pane fx:id="colorDisplay" layoutX="344.0" layoutY="164.0" prefHeight="84.0" prefWidth="233.0" style="-fx-background-color: #FFFFFF;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Pane>
       <Pane fx:id="randomColorPane1" layoutX="344.0" layoutY="271.0" prefHeight="25.0" prefWidth="25.0">
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -74,9 +76,39 @@ public class ColorPickerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Color color = new Color(0,0,0);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
 
+        colorDisplay.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(colorDisplay));
+            clipboard.setContent(content);
+            System.out.println("Valeur hexadecimale collée dans le presse papier");
+        });
 
+        randomColorPane1.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(randomColorPane1));
+            clipboard.setContent(content);
+        });
 
+        randomColorPane2.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(randomColorPane2));
+            clipboard.setContent(content);
+        });
+
+        randomColorPane3.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(randomColorPane3));
+            clipboard.setContent(content);
+        });
+
+        randomColorPane4.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(randomColorPane4));
+            clipboard.setContent(content);
+        });
+
+        randomColorPane5.setOnMouseClicked((e) -> {
+            content.putString(getHexFromPane(randomColorPane5));
+            clipboard.setContent(content);
+        });
 
         redRange.valueProperty().addListener((observableValue, number, t1) -> {
             color.setRed((int) redRange.getValue());
@@ -219,7 +251,6 @@ public class ColorPickerController implements Initializable {
             blueRange.setValue(color.getBlue());
             blueInput.setText(String.valueOf(color.getBlue()));
 
-
             randomColorPane1.setStyle("-fx-background-color: #FFFFFF;");
             randomColorPane2.setStyle("-fx-background-color: #FFFFFF;");
             randomColorPane3.setStyle("-fx-background-color: #FFFFFF;");
@@ -248,10 +279,6 @@ public class ColorPickerController implements Initializable {
             randomColorPane4.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
             randomColorPane5.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
         });
-
-        randomColorPane1.setOnMouseClicked((e) -> {
-
-        });
     }
 
     public static String generateHexadecimalString() {
@@ -275,5 +302,10 @@ public class ColorPickerController implements Initializable {
         Color randomColor = new Color(n1, n2, n3);
 
         return randomColor;
+    }
+
+    public static String getHexFromPane(Pane pane){
+        String backgroundPane = pane.getStyle();
+        return backgroundPane.substring(22, 29);
     }
 }
