@@ -242,11 +242,15 @@ public class ColorPickerController implements Initializable {
 
 
             // random color background
-            randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
-            randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
-            randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
-            randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
-            randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane1.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
+            randomColorPane2.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
+            randomColorPane3.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
+            randomColorPane4.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
+            randomColorPane5.setStyle("-fx-background-color: " + generateColor().getHexValue() + ";");
+        });
+
+        randomColorPane1.setOnMouseClicked((e) -> {
+
         });
     }
 
@@ -259,5 +263,17 @@ public class ColorPickerController implements Initializable {
         Color randomColor = new Color(n1, n2, n3);
 
         return randomColor.getHexValue();
+    }
+
+
+    public static Color generateColor() {
+        Random r = new Random();
+        int n1 = r.nextInt(255);
+        int n2 = r.nextInt(255);
+        int n3 = r.nextInt(255);
+
+        Color randomColor = new Color(n1, n2, n3);
+
+        return randomColor;
     }
 }
