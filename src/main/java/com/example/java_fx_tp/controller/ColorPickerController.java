@@ -3,6 +3,7 @@ package com.example.java_fx_tp.controller;
 import com.example.java_fx_tp.model.Color;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
@@ -53,6 +54,12 @@ public class ColorPickerController implements Initializable {
     @FXML
     private Pane randomColorPane5;
 
+    @FXML
+    private Button resetButton;
+
+    @FXML
+    private Button randomButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -63,6 +70,13 @@ public class ColorPickerController implements Initializable {
             redInput.setText(String.valueOf(color.getRed()));
             hexaCharInput.setText(String.valueOf(color.getHexValue()));
             colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+
+            // random color background
+            randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
         });
 
         greenRange.valueProperty().addListener((observableValue, number, t1) -> {
@@ -71,6 +85,13 @@ public class ColorPickerController implements Initializable {
             hexaCharInput.setText(String.valueOf(color.getHexValue()));
             colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
 
+            // random color background
+            randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+
         });
 
         blueRange.valueProperty().addListener((observableValue, number, t1) -> {
@@ -78,6 +99,13 @@ public class ColorPickerController implements Initializable {
             blueInput.setText(String.valueOf(color.getBlue()));
             hexaCharInput.setText(String.valueOf(color.getHexValue()));
             colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
+
+            // random color background
+            randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
         });
 
         redInput.setOnAction(actionEvent -> {
@@ -163,13 +191,57 @@ public class ColorPickerController implements Initializable {
                 hexaCharInput.setText(color.getHexValue());
             }
         });
+
+        resetButton.setOnMouseClicked((e) -> {
+            color.setRed(0);
+            color.setGreen(0);
+            color.setBlue(0);
+
+            redRange.setValue(color.getRed());
+            redInput.setText(String.valueOf(color.getRed()));
+
+            greenRange.setValue(color.getGreen());
+            greenInput.setText(String.valueOf(color.getGreen()));
+
+            blueRange.setValue(color.getBlue());
+            blueInput.setText(String.valueOf(color.getBlue()));
+
+
+            randomColorPane1.setStyle("-fx-background-color: #FFFFFF;");
+            randomColorPane2.setStyle("-fx-background-color: #FFFFFF;");
+            randomColorPane3.setStyle("-fx-background-color: #FFFFFF;");
+            randomColorPane4.setStyle("-fx-background-color: #FFFFFF;");
+            randomColorPane5.setStyle("-fx-background-color: #FFFFFF;");
+        });
+
+        randomButton.setOnMouseClicked((e) -> {
+            String hexaRandomColor = generateHexadecimalString();
+            Color randomColor = new Color(hexaRandomColor);
+
+            redRange.setValue(randomColor.getRed());
+            redInput.setText(String.valueOf(randomColor.getRed()));
+
+            greenRange.setValue(randomColor.getGreen());
+            greenInput.setText(String.valueOf(randomColor.getGreen()));
+
+            blueRange.setValue(randomColor.getBlue());
+            blueInput.setText(String.valueOf(randomColor.getBlue()));
+
+
+            // random color background
+            randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+            randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+        });
     }
 
     public static String generateHexadecimalString() {
         Random r = new Random();
-        int n1 = r.nextInt(256);
-        int n2 = r.nextInt(256);
-        int n3 = r.nextInt(256);
+        int n1 = r.nextInt(255);
+        int n2 = r.nextInt(255);
+        int n3 = r.nextInt(255);
 
         Color randomColor = new Color(n1, n2, n3);
 
