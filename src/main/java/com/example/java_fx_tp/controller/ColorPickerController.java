@@ -4,6 +4,7 @@ import com.example.java_fx_tp.model.Color;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
@@ -16,16 +17,25 @@ import java.util.ResourceBundle;
 public class ColorPickerController implements Initializable {
 
     @FXML
+    private Label redLabel;
+
+    @FXML
     private Slider redRange;
 
     @FXML
     private TextField redInput;
 
     @FXML
+    private Label greenLabel;
+
+    @FXML
     private Slider greenRange;
 
     @FXML
     private TextField greenInput;
+
+    @FXML
+    private Label blueLabel;
 
     @FXML
     private Slider blueRange;
@@ -64,6 +74,9 @@ public class ColorPickerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Color color = new Color(0,0,0);
+
+
+
 
         redRange.valueProperty().addListener((observableValue, number, t1) -> {
             color.setRed((int) redRange.getValue());
