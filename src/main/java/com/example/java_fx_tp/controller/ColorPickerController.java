@@ -88,11 +88,11 @@ public class ColorPickerController implements Initializable {
                 colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
 
                 // random color background
-                randomColorPane1.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane2.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane3.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane4.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane5.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
+                randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
             }
             catch(IllegalArgumentException e) {
                 redInput.setText(String.valueOf(color.getRed()));
@@ -107,11 +107,11 @@ public class ColorPickerController implements Initializable {
                 colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
 
                 // random color background
-                randomColorPane1.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane2.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane3.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane4.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane5.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
+                randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
             }
             catch(IllegalArgumentException e) {
                 greenInput.setText(String.valueOf(color.getGreen()));
@@ -126,11 +126,11 @@ public class ColorPickerController implements Initializable {
                 colorDisplay.setStyle("-fx-background-color: " + color.getHexValue() + ";");
 
                 // random color background
-                randomColorPane1.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane2.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane3.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane4.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane5.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
+                randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
             }
             catch(IllegalArgumentException e) {
                 blueInput.setText(String.valueOf(color.getBlue()));
@@ -153,11 +153,11 @@ public class ColorPickerController implements Initializable {
                 blueInput.setText(String.valueOf(color.getBlue()));
 
                 // random color background
-                randomColorPane1.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane2.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane3.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane4.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
-                randomColorPane5.setStyle("-fx-background-color: #" + generateHexadecimalString() + ";");
+                randomColorPane1.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane2.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane3.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane4.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
+                randomColorPane5.setStyle("-fx-background-color: " + generateHexadecimalString() + ";");
             }
             catch(IllegalArgumentException e) {
                 hexaCharInput.setText(color.getHexValue());
@@ -171,20 +171,8 @@ public class ColorPickerController implements Initializable {
         int n2 = r.nextInt(256);
         int n3 = r.nextInt(256);
 
-        // n stores the random integer in defcimal form
-        String Hexadecimal1 = Integer.toHexString(n1);
-        String Hexadecimal2 = Integer.toHexString(n2);
-        String Hexadecimal3 = Integer.toHexString(n3);
+        Color randomColor = new Color(n1, n2, n3);
 
-
-        // toHexString(n) converts n to hexadecimal form
-        System.out.println(Hexadecimal1 + Hexadecimal2 + Hexadecimal3);
-        System.out.println(Hexadecimal3.length());
-        if (Hexadecimal3.length() == 1) {
-            return Hexadecimal1 + Hexadecimal2 + Hexadecimal3 + "0";
-        }
-        else {
-            return Hexadecimal1 + Hexadecimal2 + Hexadecimal3;
-        }
+        return randomColor.getHexValue();
     }
 }
