@@ -1,18 +1,25 @@
 package com.example.java_fx_tp.controller;
 
+import com.example.java_fx_tp.ColorPickerApplication;
+import com.example.java_fx_tp.UserApplication;
 import com.example.java_fx_tp.model.Color;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import javafx.scene.image.Image;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -76,38 +83,46 @@ public class ColorPickerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Color color = new Color(0,0,0);
+
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
+
+        //FXMLLoader fxmlLoader = new FXMLLoader();
 
         colorDisplay.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(colorDisplay));
             clipboard.setContent(content);
-            System.out.println("Valeur hexadecimale collée dans le presse papier");
+            displayModal();
         });
 
         randomColorPane1.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(randomColorPane1));
             clipboard.setContent(content);
+            displayModal();
         });
 
         randomColorPane2.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(randomColorPane2));
             clipboard.setContent(content);
+            displayModal();
         });
 
         randomColorPane3.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(randomColorPane3));
             clipboard.setContent(content);
+            displayModal();
         });
 
         randomColorPane4.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(randomColorPane4));
             clipboard.setContent(content);
+            displayModal();
         });
 
         randomColorPane5.setOnMouseClicked((e) -> {
             content.putString(getHexFromPane(randomColorPane5));
             clipboard.setContent(content);
+            displayModal();
         });
 
         redRange.valueProperty().addListener((observableValue, number, t1) -> {
@@ -281,7 +296,28 @@ public class ColorPickerController implements Initializable {
         });
     }
 
-    public static String generateHexadecimalString() {
+    public void displayModal(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ColorPickerApplication.class.getResource("/com/example/java_fx_tp/CopytoClipboardNotification.fxml"));
+            DialogPane copyNotification = fxmlLoader.load();
+
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(copyNotification);
+            dialog.setTitle("Copie réussie");
+            Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(Objects.requireNonNull(this.getClass().getResource("/com/example/java_fx_tp/check_icon.png")).toString()));
+
+            Optional <ButtonType> clickedButton = dialog.showAndWait();
+            if((clickedButton.get() == ButtonType.OK)){
+                dialog.hide();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Là c'est la merde");
+        }
+    }
+
+    public String generateHexadecimalString() {
         Random r = new Random();
         int n1 = r.nextInt(255);
         int n2 = r.nextInt(255);
@@ -293,7 +329,7 @@ public class ColorPickerController implements Initializable {
     }
 
 
-    public static Color generateColor() {
+    public Color generateColor() {
         Random r = new Random();
         int n1 = r.nextInt(255);
         int n2 = r.nextInt(255);
@@ -304,7 +340,7 @@ public class ColorPickerController implements Initializable {
         return randomColor;
     }
 
-    public static String getHexFromPane(Pane pane){
+    public String getHexFromPane(Pane pane){
         String backgroundPane = pane.getStyle();
         return backgroundPane.substring(22, 29);
     }
